@@ -17,28 +17,28 @@ public class Main {
             System.out.println("명령: ");
             String article = sc.nextLine();
             if (article.equals("등록")) {
-                System.out.printf("제목: ");
+                System.out.print("제목: ");
                 String title = sc.nextLine();
-                System.out.printf("내용: ");
+                System.out.print("내용: ");
                 String content = sc.nextLine();
                 System.out.println(id + "값이 등록되었습니다.");
-                Article article1 = new Article(id, title, content);
-                articleList.add(article1);
+                Article originarticle = new Article(id, title, content);
+                articleList.add(originarticle);
 
                 id++;
             } else if (article.equals("목록")) {
                 System.out.println("번호 / 제목 / 명언");
                 System.out.println("----------------------");
-                for (Article article2 : articleList) {
-                    System.out.println(article2.id + "/" + article2.title + "/" + article2.content);
+                for (Article newarticle : articleList) {
+                    System.out.println(newarticle.id + "/" + newarticle.title + "/" + newarticle.content);
                 }
             } else if (article.equals("삭제")) {
                 System.out.println("삭제할 값을 입력해주세요: ");
                 int deleteId = Integer.parseInt(sc.nextLine());
                 for (int i = 0; i < articleList.size(); i++) {
-                    Article article3 = articleList.get(i);
-                    if (article3.getId() == deleteId) {
-                        articleList.remove(article3);
+                    Article exarticle = articleList.get(i);
+                    if (exarticle.getId() == deleteId) {
+                        articleList.remove(exarticle);
                     }
                 }
                 System.out.println(deleteId + "번 기사는 존재하지 않습니다.");
@@ -46,14 +46,14 @@ public class Main {
                 System.out.println("수정할 Id의 값을 입력해주세요: ");
                 int modifyId = Integer.parseInt(sc.nextLine());
                 for (int j = 0; j < articleList.size(); j++) {
-                    Article article1 = articleList.get(j);
-                    System.out.printf("기존 내용: %s \n", article1.getContent());
+                    Article oddarticle = articleList.get(j);
+                    System.out.printf("기존 내용: %s \n", oddarticle.getContent());
                     String content = sc.nextLine();
-                    article1.setContent(content);
+                    oddarticle.setContent(content);
 
-                    System.out.printf("기존 제목: %s \n", article1.getTitle());
+                    System.out.printf("기존 제목: %s \n", oddarticle.getTitle());
                     String title = sc.nextLine();
-                    article1.setTitle(title);
+                    oddarticle.setTitle(title);
 
                 }
                 System.out.println(modifyId + "가 수정되었습니다.");
